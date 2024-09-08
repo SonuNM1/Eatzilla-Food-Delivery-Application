@@ -18,7 +18,9 @@ app.use((req, res, next)=>{
 
 app.use(express.json()) ; // Middleware to parse JSON bodies
 
-app.use('/api', require('./routes/CreateUser'))
+app.use('/api', require('./routes/CreateUser')) ; 
+
+app.use('/api', require('./routes/DisplayData')) ; 
 
 app.listen(port, ()=>{
     console.log(`Server listening on port: ${port}`);  

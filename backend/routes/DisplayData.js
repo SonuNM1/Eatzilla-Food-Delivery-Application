@@ -1,32 +1,20 @@
-const express = require("express") ; 
-const router = express.Router() ; 
-
-/*
-router.post('/foodData', (req, res)=>{
-    try{
-        console.log(global.food_items) ; 
-        res.send([global.food_items, global.foodCategory]) ; 
-    }catch(error){
-        console.log(error.message) ; 
-        res.send("Server error")
-    }
-})
-    */
+const express = require("express");
+const router = express.Router();
 
 router.post('/foodData', (req, res) => {
     try {
-        // Check if data is loaded
-        if (!global.dataLoaded) {
-            return res.status(503).send("Data not loaded from the database yet, please try again later");
+        console.log('Food Items:', global.food_items);  // Debug log
+        console.log('Food Category:', global.foodCategory);  // Debug log
+
+        if (global.food_items && global.foodCategory) {
+            res.send([global.food_items, global.foodCategory]);
+        } else {
+            res.send("Data not loaded from the database yet, please try again later.");
         }
-
-        // Send the data if it's loaded
-        res.send([global.food_items, global.foodCategory]);
-
     } catch (error) {
         console.log(error.message);
-        res.send("Server error");
+        res.status(500).send("Server error");
     }
 });
 
-module.exports = router ; 
+module.exports = router;

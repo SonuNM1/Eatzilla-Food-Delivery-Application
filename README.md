@@ -18,3 +18,7 @@
 - Hashing Vs. Encryption 
 
 - JWT Token 
+
+- Rows & Columns - Grid System in CSS/Bootstrap 
+
+- map, filter

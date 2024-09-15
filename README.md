@@ -22,3 +22,5 @@
 - Rows & Columns - Grid System in CSS/Bootstrap 
 
 - map, filter
+
+- Saving data in state leads to data loss when the page reloads, this is a disadvantage. State is not a reliable source of saving info. 

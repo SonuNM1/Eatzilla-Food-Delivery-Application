@@ -29,6 +29,7 @@ app.use(express.json()); // Middleware to parse JSON bodies
 
 app.use('/api', require('./routes/CreateUser'));
 app.use('/api', require('./routes/DisplayData'));
+app.use('/api', require('./routes/OrderData'));
 
 // Start the server immediately
 app.listen(port, () => {

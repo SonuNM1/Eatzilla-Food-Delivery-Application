@@ -50,55 +50,56 @@ router.post('/createuser', [
 
 router.post('/loginuser', [
     body('email').isEmail(),
-    body('password','Incorrect password').isLength({min:5})
-], async(req, res)=>{
-
-    const errors = validationResult(req) ; 
-
-    if(!errors.isEmpty()){
-        return res.status(400).json({
-            errors: errors.array()
-        })
+    body('password', 'Incorrect password').isLength({ min: 5 })
+  ], async (req, res) => {
+    const errors = validationResult(req);
+  
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array()
+      });
     }
-
-    let email = req.body.email ; 
-
-    try{
-        let userData = await User.findOne({email}) ; 
-
-        if(!userData){
-            return res.status(400).json({
-                error: "Try loggin with correct credentials"
-            })
+  
+    let email = req.body.email;
+  
+    try {
+      // Find user by email
+      let userData = await User.findOne({ email });
+      if (!userData) {
+        return res.status(400).json({ error: "Try logging in with correct credentials" });
+      }
+  
+      // Compare password
+      const passwordCompare = await bcrypt.compare(req.body.password, userData.password);
+      if (!passwordCompare) {
+        return res.status(400).json({ error: "Try logging in with correct credentials" });
+      }
+  
+      // JWT payload
+      const data = {
+        user: {
+          id: userData.id
         }
-
-        const passwordCompare = await bcrypt.compare(req.body.password, userData.password) ;
-
-        if(!passwordCompare){
-            return res.status(400).json({
-                error: "Try loggin with correct credentials"
-            })
-        }
-
-        const data = {
-            user:{
-                id: userData.id
-            }
-        }
-
-        const authToken = jwt.sign(data, jwtSecret)
-
-        return res.json({
-            success: true,
-            authToken: authToken
-        }) ; 
-
-    }catch(error){
-        console.log(`Error: ${error}`.bgRed.white) ; 
-        res.json({
-            success: false
-        })
+      };
+  
+      // Generate token
+      const authToken = jwt.sign(data, jwtSecret);
+      console.log("AuthToken Generated:", authToken);
+  
+      // Success response
+      return res.json({
+        success: true,
+        authToken: authToken
+      });
+  
+    } catch (error) {
+      console.log(`Error: ${error}`.bgRed.white);
+      res.status(500).json({
+        success: false,
+        message: "Internal Server Error"
+      });
     }
-})
+  });
+  
 
 module.exports = router ; 

@@ -1,0 +1,98 @@
+/* Background color using bg-success */
+.signup-container {
+    background-color: #198754; /* Bootstrap bg-success */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+  }
+  
+  /* Card styling for form */
+  .signup-card {
+    background-color: #343a40; /* Dark Black */
+    border-radius: 30px; /* Increased border-radius */
+    width: 100%;
+    max-width: 800px; /* Increased width */
+    padding: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Splitting form into two sections */
+  .form-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Increased gap between sections */
+  }
+  
+  /* Each form section gets 48% of the width */
+  .form-section .mb-3 {
+    width: 48%;
+  }
+  
+  /* Dark input fields with soft border */
+  .input-dark {
+    background-color: #495057;
+    color: white;
+    border: 1px solid #6c757d;
+    border-radius: 5px;
+  }
+  
+  /* Input focus effect */
+  .input-dark:focus {
+    background-color: #343a40;
+    border-color: #198754;
+    color: white;
+  }
+  
+  /* Button customization */
+  .btn-dark {
+    background-color: #212529; /* Darker black */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-dark:hover {
+    background-color: #495057;
+  }
+  
+  /* Text color adjustments */
+  .text-light {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Adjusted label and link styles */
+  .form-label {
+    font-weight: 500;
+  }
+  
+  .btn-link {
+    color: #dee2e6; /* Lightened white for link */
+  }
+  
+  .btn-link:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  /* Small tweaks for responsiveness */
+  @media (max-width: 768px) {
+    .signup-card {
+      width: 90%;
+    }
+  
+    /* Stack the sections vertically on smaller screens */
+    .form-section {
+      flex-direction: column;
+      gap: 15px; /* Adjusted gap for smaller screens */
+    }
+  
+    .form-section .mb-3 {
+      width: 100%;
+    }
+  }
+  

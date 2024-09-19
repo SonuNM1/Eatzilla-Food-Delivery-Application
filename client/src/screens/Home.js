@@ -15,12 +15,13 @@ export default function Home() {
 
   const loadData = async () => {
     try {
-      let response = await fetch("http://localhost:7000/api/foodData", {
+      let response = await fetch("https://eatzilla-jtmd.onrender.com/api/foodData", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
       });
+      
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

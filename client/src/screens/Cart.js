@@ -28,7 +28,7 @@ export default function Cart() {
       return;
     }
 
-    let response = await fetch("http://localhost:7000/api/orderData", {
+    let response = await fetch("https://eatzilla-jtmd.onrender.com/api/orderData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

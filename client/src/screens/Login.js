@@ -10,7 +10,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('http://localhost:7000/api/loginuser', {
+    const response = await fetch('https://eatzilla-jtmd.onrender.com/api/loginuser', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

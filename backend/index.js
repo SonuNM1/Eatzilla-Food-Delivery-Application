@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000;
 connectDB();
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://eatzilla.netlify.app/',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type']
 }))

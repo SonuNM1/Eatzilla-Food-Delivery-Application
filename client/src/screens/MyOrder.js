@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import './MyOrder.css'; // Import CSS file for styling
+const BASE_URL = process.env.BASE_URL ; 
 
 export default function MyOrder() {
     const [orderData, setOrderData] = useState([]);
 
     const fetchMyOrder = async () => {
         try {
-            const response = await fetch('https://eatzilla-jtmd.onrender.com/api/myOrderData', {
+            const response = await fetch(`${BASE_URL}/myOrderData`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

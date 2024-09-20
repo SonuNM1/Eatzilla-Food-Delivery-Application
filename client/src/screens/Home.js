@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
+const BASE_URL = process.env.BASE_URL ; 
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -15,7 +16,7 @@ export default function Home() {
 
   const loadData = async () => {
     try {
-      let response = await fetch("https://eatzilla-jtmd.onrender.com/api/foodData", {
+      let response = await fetch(`${BASE_URL}/foodData`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",

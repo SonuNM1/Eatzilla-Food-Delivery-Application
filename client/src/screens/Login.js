@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Login.css'; // Make sure to create this CSS file
-const BASE_URL = process.env.BASE_URL ; 
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL ; 
 
 export default function Login() {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`${BASE_URL}/loginuser`, {
+    const response = await fetch(`${REACT_APP_BASE_URL}/loginuser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

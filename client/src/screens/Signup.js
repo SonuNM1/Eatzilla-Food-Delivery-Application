@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import '../styles/Signup.css'; // External CSS for custom styling
-const BASE_URL = process.env.BASE_URL ; 
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL ; 
 
 export default function Signup() {
   const [credentials, setCredentials] = useState({
@@ -16,7 +16,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`${BASE_URL}/createuser`, {
+    const response = await fetch(`${REACT_APP_BASE_URL}/createuser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

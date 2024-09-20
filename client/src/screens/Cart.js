@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import trash from "../trash.svg";
 import { useCart, useDispatchCart } from "./../components/ContextReducer";
 import { useNavigate } from "react-router-dom";
-const BASE_URL = process.env.BASE_URL ; 
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL ; 
 
 export default function Cart() {
   let data = useCart();
@@ -29,7 +29,7 @@ export default function Cart() {
       return;
     }
 
-    let response = await fetch(`${BASE_URL}/orderData`, {
+    let response = await fetch(`${REACT_APP_BASE_URL}/orderData`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -8,11 +8,19 @@ const port = process.env.PORT || 5000;
 
 connectDB();
 
+const allowedOrigins = ['https://eatzilla.netlify.app']; 
+
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://eatzilla.netlify.app/'],
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type']
-}))
+    allowedHeaders: ['Content-Type'],
+}));
 
 
 app.use(express.json()); // Middleware to parse JSON bodies
